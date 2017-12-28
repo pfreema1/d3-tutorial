@@ -1,3 +1,3 @@
-# hiya-buddy-boilerplate
+# d3 tutorial
 ✌(-‿-)✌
 
