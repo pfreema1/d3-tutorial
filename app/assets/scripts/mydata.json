@@ -1,50 +1,32 @@
-[
-  {
-    "username": "Maria",
-    "userId": 1,
-    "pomodoros": 12,
-    "last pomodoro": null
-  },
-  {
-    "username": "turd bucket",
-    "userId": 2,
-    "pomodoros": 27,
-    "last pomodoro": null
-  },
-  {
-    "username": "principal skinner",
-    "userId": 3,
-    "pomodoros": 83,
-    "last pomodoro": null
-  },
-  {
-    "username": "007 meowface",
-    "userId": 4,
-    "pomodoros": 52,
-    "last pomodoro": null
-  },
-  {
-    "username": "happyturds",
-    "userId": 5,
-    "pomodoros": 2,
-    "last pomodoro": null
-  },
-  {
-    "username": "new toilet",
-    "userId": 6,
-    "pomodoros": 19,
-    "last pomodoro": null
-  },
-  {
-    "username": "sweetcasebro1984",
-    "userId": 7,
-    "pomodoros": 63,
-    "last pomodoro": null
-  },
-  {
-    "username": "Jimingy",
-    "userId": 8,
-    "pomodoros": 79,
-    "last pomodoro": null
-  }
-]
+{
+  "name": "max",
+  "children": [
+    {
+      "name": "Sylvia",
+      "children": [
+        {
+          "name": "Craig"
+        },
+        {
+          "name": "Robin"
+        },
+        {
+          "name": "Anna"
+        }
+      ]
+    },
+    {
+      "name": "David",
+      "children": [
+        {
+          "name": "Jeff",
+          "size": 3534
+        },
+        {
+          "name": "Buffy",
+          "size": 5731
+        }
+      ]
+    }
+  ]
+}
