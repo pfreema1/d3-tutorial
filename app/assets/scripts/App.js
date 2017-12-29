@@ -53,40 +53,6 @@ var data = {
 
 
 
-// var data = {
-//   "name": "max",
-//   "children": [
-//     {
-//       "name": "Sylvia",
-//       "children": [
-//         {
-//           "name": "Craig"
-//         },
-//         {
-//           "name": "Robin"
-//         },
-//         {
-//           "name": "Anna"
-//         }
-//       ]
-//     },
-//     {
-//       "name": "David",
-//       "children": [
-//         {
-//           "name": "Jeff",
-//           "size": 3534
-//         },
-//         {
-//           "name": "Buffy",
-//           "size": 5731
-//         }
-//       ]
-//     }
-//   ]
-// }
-
-
 
 //   END DATA
 
@@ -122,7 +88,13 @@ var pack = d3.layout.pack()
 var nodes = pack.nodes(data);
 
 // console.log(data);
-console.log(nodes);
+console.log(d3.max(nodes));
+
+var myOwnFontScale = d3.scale.linear()
+.domain([0, 100])
+.range([0, 30]);
+
+
 
 var node = canvas.selectAll(".node")
   .data(nodes)
@@ -134,15 +106,22 @@ var node = canvas.selectAll(".node")
 //append a circle to each node - before this point, only the elements were created in the dom and given a class above
 node.append("circle")
   .attr("r", function(d) { return d.r; })
-  .attr("fill", "skyblue")
+  .attr("fill", function(d) { return d.username ? "skyblue" : "yellow"})
   .attr("opacity", 0.25)
   .attr("stroke", "#ADADAD")
   .attr("stroke-width", 2);
 
-//append text to the node
+
 node.append("text")
   .text(function(d) {
+    if(d.username) {
+      return d.username;
+    }
     
-    return d.username;
   })
-  .attr("text-anchor", "middle");
+  .attr("text-anchor", "middle")
+  .attr("font-family", "sans-serif")
+  .attr("font-size", function(d) {
+
+    return myOwnFontScale(d.pomodoros);
+  });
