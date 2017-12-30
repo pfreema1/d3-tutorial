@@ -71,7 +71,7 @@ var canvas = d3
   
 //create layout 
 var pack = d3.layout.pack()
-  .size([width, height - 50])
+  .size([width, height - 60])
   .value(function(d, i) {
     // console.log("d from .value layout:  " + d);
     return d.pomodoros;
@@ -104,6 +104,8 @@ var node = canvas.selectAll(".node")
   .append("g")
     .attr("class", "node")
     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; } );
+  
+
 
 //append a circle to each node - before this point, only the elements were created in the dom and given a class above
 node.append("circle")
