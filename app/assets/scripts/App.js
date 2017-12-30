@@ -1,5 +1,5 @@
 var data = {
-  "name": "foo",
+  "name": "parent",
   "children": [
   {
     "username": "Maria",
@@ -90,9 +90,9 @@ var nodes = pack.nodes(data);
 // console.log(data);
 console.log(d3.max(nodes));
 
-var myOwnFontScale = d3.scale.linear()
-.domain([0, 100])
-.range([0, 30]);
+// var myOwnFontScale = d3.scale.linear()
+// .domain([0, 100])
+// .range([0, 30]);
 
 
 
@@ -103,16 +103,37 @@ var node = canvas.selectAll(".node")
     .attr("class", "node")
     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; } );
 
-//append a circle to each node - before this point, only the elements were created in the dom and given a class above
+
+    
+
 node.append("circle")
+  .attr("id", function(d) { 
+    if(d.name == "parent") {
+      console.log("on parent!");
+      return "";
+    } else {
+      return d.userId; 
+    }
+  })
   .attr("r", function(d) { return d.r; })
   .attr("fill", function(d) { return d.username ? "skyblue" : "yellow"})
   .attr("opacity", 0.25)
   .attr("stroke", "#ADADAD")
   .attr("stroke-width", 2);
 
+node.append("clipPath")
+  .attr("id", function(d) { 
+    if(d.name == "parent") {
+      return "";
+    } else {
+      return "clip-" + d.userId; 
+    }
+  });
 
 node.append("text")
+  .attr("clip-path", function(d) { 
+    return "url(#clip-" + d.userId + ")"; 
+  })
   .text(function(d) {
     if(d.username) {
       return d.username;
@@ -121,7 +142,4 @@ node.append("text")
   })
   .attr("text-anchor", "middle")
   .attr("font-family", "sans-serif")
-  .attr("font-size", function(d) {
-
-    return myOwnFontScale(d.pomodoros);
-  });
+  .attr("font-size", 25);
